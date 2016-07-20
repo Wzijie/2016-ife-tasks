@@ -243,3 +243,43 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+/*
+ *  以下为添加内容
+ */
+
+ul{
+  list-style: none;
+  overflow: auto;
+}
+.task-list{
+  padding: 0;
+}
+.task-list .task{
+  padding: 10px;
+  width: 100%;
+  font-size: 14px;
+  float: left;
+}
+.task-list .task .task-cont{
+  display: block;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 0 2px #949494;
+  -webkit-box-shadow: 0 0 2px #949494;
+}
+@media (min-width: 768px) {
+  .task-list .task{
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .task-list .task{
+    width: 33.33333%;
+  }
+}
+@media (min-width: 1200px) {
+  .task-list .task{
+    width: 25%;
+  }
+}
