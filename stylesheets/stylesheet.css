@@ -248,12 +248,10 @@ a {
  *  以下为添加内容
  */
 
-ul{
-  list-style: none;
-  overflow: auto;
-}
 .task-list{
   padding: 0;
+  list-style: none;
+  overflow: auto;
 }
 .task-list .task{
   padding: 10px;
