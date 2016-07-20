@@ -205,7 +205,7 @@ a {
 
 @media screen and (min-width: 64em) {
   .main-content {
-    max-width: 64rem;
+    max-width: 76rem;
     padding: 2rem 6rem;
     margin: 0 auto;
     font-size: 1.1rem; } }
@@ -267,6 +267,9 @@ ul{
   background: #fff;
   box-shadow: 0 0 2px #949494;
   -webkit-box-shadow: 0 0 2px #949494;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 @media (min-width: 768px) {
   .task-list .task{
