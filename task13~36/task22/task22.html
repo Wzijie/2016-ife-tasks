@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 1200px;
+			height: 200px;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			display: flex;
+			margin: 100px auto 0 auto;
+			padding: 0 10px;
+			justify-content: space-between;
+			align-items: center;
+			background: #fff;
+		}
+		#container div{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex: 1;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			height: 80%;
+			padding: 0 10px;
+			margin: 0 5px;
+			background: #fff;
+		}
+		.btn-cont{
+			margin-top: 50px;
+			text-align: center;
+		}
+		button{
+			width: 150px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="child-1">
+			<div class="child-2">
+				<div class="child-3"></div>
+				<div class="child-3"></div>
+			</div>
+			<div class="child-2">
+				<div class="child-3"></div>
+				<div class="child-3"></div>
+			</div>
+		</div>
+		<div class="child-1">
+			<div class="child-2">
+				<div class="child-3"></div>
+				<div class="child-3"></div>
+			</div>
+			<div class="child-2">
+				<div class="child-3"></div>
+				<div class="child-3"></div>
+			</div>
+		</div>
+	</div>
+	<div class="btn-cont">
+		<button class="pre-order">前序遍历</button>
+		<button class="in-order">中序遍历</button>
+		<button class="post-order">后序遍历</button>
+	</div>
+	
+</body>
+</html>
+<script src="task22_js.js"></script>

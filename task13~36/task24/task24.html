@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 90%;
+			height: 300px;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			display: flex;
+			margin: 50px auto 0 auto;
+			padding: 0 10px;
+			justify-content: space-between;
+			align-items: center;
+			background: #fff;
+			font-size: 12px;
+			/*flex-wrap: wrap;*/
+		}
+		#container div{
+			height: 70%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex: 1;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			padding: 0 10px;
+			margin: 0 5px;
+			background: #fff;
+			/*flex-wrap: wrap;*/
+		}
+		.btn-cont{
+			margin-top: 50px;
+			text-align: center;
+		}
+		button{
+			width: 150px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn-cont">
+		<div>
+			<button class="depth-first">深度优先遍历</button>
+			<button class="breadth-first">广度优先遍历</button>
+			<input class="search-input" type="text" placeholder="搜索">
+			<button class="depth-first-search">深度优先搜索</button>
+			<button class="breadth-first-search">广度优先搜索</button>
+		</div>
+		<div>
+			<button class="remove-node">删除节点</button>
+			<input class="add-node-value" type="text" placeholder="添加节点的内容">
+			<button class="add-node">添加节点</button>
+		</div>
+	</div>
+	<section>
+	<div id="container">
+	Super
+		<div class="child-1">
+		Cat
+			<div class="child-2">
+			Apple
+				<div class="child-3">Poor</div>
+				<div class="child-3">Pig</div>
+				<div class="child-3">Colo</div>
+				<div class="child-3">Soccor</div>
+			</div>
+			<div class="child-2">
+				phone
+			</div>
+			<div class="child-2">
+			OW
+				<div class="child-3">Book</div>
+				<div class="child-3">School</div>
+			</div>
+		</div>
+		<div class="child-1">
+		Note
+			<div class="child-2">
+			Human
+				<div class="child-3">Code</div>
+				<div class="child-3">Operote</div>
+				<div class="child-3">Mon</div>
+			</div>
+			<div class="child-2">
+			Progrom
+				<div class="child-3">
+				Bement
+					<div class="child-4">Cat</div>
+				</div>
+				<div class="child-3">Gass</div>
+			</div>
+		</div>
+		<div class="child-1">Flsh</div>
+	</div>
+	</section>
+</body>
+</html>
+<script src="task24_js.js"></script>

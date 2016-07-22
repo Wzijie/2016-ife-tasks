@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 1600px;
+			height: 200px;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			display: flex;
+			margin: 100px auto 0 auto;
+			padding: 0 10px;
+			justify-content: space-between;
+			align-items: center;
+			background: #fff;
+		}
+		#container div{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex: 1;
+			box-sizing: border-box;
+			border: 1px solid #000;
+			height: 80%;
+			padding: 0 10px;
+			margin: 0 5px;
+			background: #fff;
+		}
+		.btn-cont{
+			margin-top: 50px;
+			text-align: center;
+		}
+		button{
+			width: 150px;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn-cont">
+		<button class="pre-order">前序遍历</button>
+	</div>
+	<div id="container">
+	Super
+		<div class="child-1">
+		Cat
+			<div class="child-2">
+			Apple
+				<div class="child-3">Poor</div>
+				<div class="child-3">Pig</div>
+				<div class="child-3">Colo</div>
+				<div class="child-3">Soccor</div>
+			</div>
+			<div class="child-2">
+				phone
+			</div>
+			<div class="child-2">
+				<div class="child-3">Book</div>
+				<div class="child-3">School</div>
+			</div>
+		</div>
+		<div class="child-1">
+		Note
+			<div class="child-2">
+			Human
+				<div class="child-3">Code</div>
+				<div class="child-3">Operote</div>
+				<div class="child-3">Mon</div>
+			</div>
+			<div class="child-2">
+			Progrom
+				<div class="child-3">
+				Bement
+					<div class="child-4">Cat</div>
+				</div>
+				<div class="child-3">Gass</div>
+			</div>
+		</div>
+		<div class="child-1">Flsh</div>
+	</div>
+</body>
+</html>
+<script src="task23_js.js"></script>
