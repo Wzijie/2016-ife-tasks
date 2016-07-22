@@ -61,43 +61,59 @@ function randomColor(){
 /**
  * 渲染图表
  */
+var intervalId; //逐渐改变高度 的定时器
 function renderChart() {
   var aqiChart = document.querySelector(".aqi-chart-wrap");
   var formGraTime = document.querySelectorAll("input[name='gra-time']");
-  var date = "";
   var citySelect = document.querySelector("#city-select");
+  var aqiTitle = document.getElementById("aqi-title");
   var size = 0;
   var div = "";
   var divWidth = 0;
   var divHeight = [];
-  (function(){
-    for(var i=0,len=formGraTime.length; i<len; i++){
-      if(formGraTime[i]){
-        date = formGraTime[i].value;
-      }
-      break;
-    }
-  })();
- 
+  var transf = 0; //逐渐改变高度 的计数
 
+ 
   for(var time in chartData){
     // chartData[time] = aqiSourceData[citySelect.value][time];
     size++;
-    div += "<div title='日期：" + time + "&#13;数据：" + chartData[time] + "'></div>";
+    div += "<div title='日期：" + time + "&#13;数据：" + chartData[time] + "'><span>" + chartData[time] + "</span></div>";
     divHeight.push(chartData[time]);
   }
   divWidth = (aqiChart.offsetWidth / 2) / size;
   aqiChart.innerHTML = div;
+  switch(pageState.nowGraTime){
+    case "day":
+      aqiTitle.innerHTML = citySelect.options[pageState.nowSelectCity].value + "2016-01-01~2016-03-31每日空气质量指数";
+      break;
+    case "week":
+      aqiTitle.innerHTML = citySelect.options[pageState.nowSelectCity].innerHTML + "2016-01-01~2016-03-31每周空气质量指数";
+      break;
+    case "month":
+      aqiTitle.innerHTML = citySelect.value + "2016-01-01~2016-03-31每月空气质量指数";
+      break;
+  }
+  
   var aqiChartDiv = aqiChart.getElementsByTagName("div");
   setTimeout(function(){
     for(var j=0,divLen=aqiChartDiv.length; j<divLen; j++){
       aqiChartDiv[j].style.maxWidth = divWidth + "px";
-      aqiChartDiv[j].style.height = divHeight[j] + "px";
+      //aqiChartDiv[j].style.height = divHeight[j] + "px";
       aqiChartDiv[j].style.backgroundColor = randomColor();
     }
   },50); 
+  //aqiChart.onclick = function(){clearInterval(intervalId)};
+  clearInterval(intervalId);
+  //逐渐改变高度
+  intervalId = setInterval(function(){  
+    aqiChartDiv[transf].style.height = divHeight[transf] + "px";
+    aqiChartDiv[transf].style.transform = "translate(0,0)";
+    transf++;
+    if(transf >= size){
+      clearInterval(intervalId);
+    }
+  },25);
 }
-renderChart();
 /**
  * 日、周、月的radio事件点击时的处理函数
  */

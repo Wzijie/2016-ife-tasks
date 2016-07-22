@@ -2,31 +2,95 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>零基础JavaScript编码（四）</title>
+    <title>DOM实现柱状图图表</title>
     <style>
 		*{
 			margin: 0;
 			padding: 0;
 		}
-		.aqi-chart-wrap{
-			width: 90%;
-			margin: 0 auto;
+    body{
+      font-family: 微软雅黑;
+      background: #eee;
+      min-width: 1200px;
+    }
+    fieldset{
+      width: 90%;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 50px;
+      margin-top: 10px;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    .container{
+      width: 90%;
+      margin: 0 auto;
+      position: relative;
+    }
+	  .aqi-chart-wrap{
+			width: 100%;
+			margin: 30px auto 0 auto;
 			height: 600px;
-			border: 1px solid #000;
+			border-left: 1px solid #000;
+		  border-bottom: 1px solid #000;
 			display: flex;
 			justify-content: space-around;
 			align-items: flex-end;
-      padding: 0 20px;
+	    padding: 0 20px;
+	    overflow: hidden;
+	    box-sizing: border-box;
 		}
 		.aqi-chart-wrap div{
 			flex: 1;
-			border: 1px solid #000;
+			/*border: 1px solid #000;*/
 			box-sizing: border-box;
 			border-bottom: none;
       height: 0px;
       transition: all 0.5s ease;
       box-shadow: 4px 4px 10px rgba(0,0,0,0.7);
+      position: relative;
+      transform: translate(0,20px);
 		}
+    .aqi-chart-wrap div span{
+      font-size: 12px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%,-100%);
+    }
+    #city-select{
+      margin-top: 5px;
+    }
+    .container .y-axis{
+      position: absolute;
+      transform: translate(-120%,50%);
+    }
+    .container .y-axis:nth-of-type(1){
+      bottom: 100px;
+    }
+    .container .y-axis:nth-of-type(2){
+      bottom: 200px;
+    }
+    .container .y-axis:nth-of-type(3){
+      bottom: 300px;
+    }
+    .container .y-axis:nth-of-type(4){
+      bottom: 400px;
+    }
+    .container .y-axis:nth-of-type(5){
+      bottom: 500px;
+    }
+    .container .y-axis:nth-of-type(6){
+      bottom: 600px;
+    }
+    #aqi-title{
+    	font-size: 21px;
+    	font-weight: normal;
+    	position: absolute;
+    	top: 0;
+    	left: 50%;
+    	transform: translate(-50%,-50%);
+    }
     </style>
   </head>
 <body>
@@ -44,10 +108,18 @@
       <option>sb</option>
     </select>
   </fieldset>
+  <div class="container">
+    <div class="aqi-chart-wrap">
 
-  <div class="aqi-chart-wrap">
-
+    </div>
+    <h2 id="aqi-title"></h2>
+    <span class="y-axis">100</span>
+    <span class="y-axis">200</span>
+    <span class="y-axis">300</span>
+    <span class="y-axis">400</span>
+    <span class="y-axis">500</span>
+    <span class="y-axis">600</span>
   </div>
-<script src="task17-js.js"></script>
+<script src="task17_js.js"></script>
 </body>
 </html>
