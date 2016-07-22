@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务二十九：表单（一）单个表单项的检验</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: 黑体;
+		}
+		div{
+			margin: 100px 0 0 100px;
+		}
+		input{
+			margin: 0 0 0 20px;
+			width: 200px;
+			height: 30px;
+			border-radius: 5px;
+			border: 1px solid #aaa;
+			box-sizing: border-box;
+			outline: none;
+			font-family: 黑体;
+			padding: 0 5px;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			border: none;
+			background: #2f79ba;
+			color: #fff;
+			border-radius: 5px;
+			font-family: 黑体;
+		}
+		p{
+			margin: 10px 0 0 50px;
+			color: #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label>名称<input class="check" type="text"></label>
+		<button class="button">验证</button>
+		<p class="result">必填，长度为4~16个字符</p>
+	</div>
+</body>
+</html>
+<script src="task29_js.js"></script>

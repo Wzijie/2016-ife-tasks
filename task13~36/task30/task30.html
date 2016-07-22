@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十：表单（二）多个表单项的动态校验</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: 黑体;
+		}
+		div{
+			margin: 20px 0 0 100px;
+		}
+		input{
+			margin: 0 0 0 20px;
+			width: 200px;
+			height: 30px;
+			border-radius: 5px;
+			border: 1px solid #aaa;
+			box-sizing: border-box;
+			outline: none;
+			font-family: 黑体;
+			padding: 0 5px;
+		}
+		div:nth-of-type(3) label{
+			margin-left: -31px;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			border: none;
+			background: #2f79ba;
+			color: #fff;
+			border-radius: 5px;
+			font-family: 黑体;
+			margin: 20px 0 0 100px;
+		}
+		p{
+			margin: 10px 0 0 50px;
+			color: #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<label>名称<input class="check" type="text"></label>
+		<p class="result"></p>
+	</div>
+	<div>
+		<label>密码<input class="check" type="text"></label>
+		<p class="result"></p>
+	</div>
+	<div>
+		<label>确认密码<input class="check" type="text"></label>
+		<p class="result"></p>
+	</div>
+	<div>
+		<label>邮箱<input class="check" type="text"></label>
+		<p class="result"></p>
+	</div>
+	<div>
+		<label>手机<input class="check" type="text"></label>
+		<p class="result"></p>
+	</div>
+	<button class="button">提交</button>
+</body>
+</html>
+<script src="task30_js.js"></script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十一：表单（三）联动</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			padding: 10px;
+			font-family: 微软雅黑;
+		}
+		div{
+			width: 300px;
+			height: 100px;
+			position: relative;
+			margin-top: 20px;
+		}
+		div section{
+			position: absolute;
+			top: 0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<form>
+
+			<input id="option1" name="option" type="radio">
+			<label for="option1">在校生</label>	
+			<input id="option2" name="option" type="radio">
+			<label for="option2">非在校生</label>	
+
+	</form>
+	<div>
+		<section>
+			<label>学校</label>
+			<select>
+				<option value="">北京</option>
+			</select>
+			<select>
+				<option value="">北京大学</option>
+			</select>
+		</section>
+		<section>
+			<label>就业单位</label>
+			<input type="text">
+		</section>
+	</div>
+</body>
+</html>
+<script src="task31_js.js"></script>
