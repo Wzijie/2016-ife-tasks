@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+		.planet{
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			background: #0B7AEC;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -75px 0 0 -75px;
+		}
+		.airship{
+			width: 100px;
+			height: 20px;
+			background: #EC730B;
+			position: absolute;
+			display: none;
+			color: #fff;
+			font-family: 微软雅黑;
+			text-align: center;
+			border-radius: 5px;
+		}
+		.airship:nth-of-type(1){
+			top: -40px;
+			left: 25px;
+			transform: rotate(0deg);
+			transform-origin: 50px 115px;
+		}
+		.airship:nth-of-type(2){
+			top: -80px;
+			left: 25px;
+			transform: rotate(0deg);
+			transform-origin: 60px 155px;
+		}
+		.airship:nth-of-type(3){
+			top: -120px;
+			left: 25px;
+			transform: rotate(0deg);
+			transform-origin: 60px 195px;
+		}
+		.airship:nth-of-type(4){
+			top: -160px;
+			left: 25px;
+			transform: rotate(0deg);
+			transform-origin: 60px 235px;
+		}
+		.airship-order span{
+			color: #fff;
+		}
+		.console{
+			width: 300px;
+			height: 500px;
+			background: rgba(255,255,255,0.1);
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: 1px solid rgba(255,255,255,0.5);
+			border-bottom: none;
+			overflow: auto;
+			color: #fff;
+			padding: 10px;
+			font-family: 微软雅黑;
+			font-size: 14px;
+			line-height: 22px;
+		}
+	</style>
+</head>
+<body>
+	<div class="operation">
+		<div class="airship-order">
+			<span>一号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+			<select class="power-system">
+				<option value="前进号">前进号</option>
+				<option value="奔腾号">奔腾号</option>
+				<option value="超越号">超越号</option>
+			</select>
+			<select class="energy-system">
+				<option value="劲量型">劲量型</option>
+				<option value="光能型">光能型</option>
+				<option value="永久型">永久型</option>
+			</select>
+		</div>
+		<div class="airship-order">
+			<span>二号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+			<select class="power-system">
+				<option value="前进号">前进号</option>
+				<option value="奔腾号">奔腾号</option>
+				<option value="超越号">超越号</option>
+			</select>
+			<select class="energy-system">
+				<option value="劲量型">劲量型</option>
+				<option value="光能型">光能型</option>
+				<option value="永久型">永久型</option>
+			</select>
+		</div>
+		<div class="airship-order">
+			<span>三号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+			<select class="power-system">
+				<option value="前进号">前进号</option>
+				<option value="奔腾号">奔腾号</option>
+				<option value="超越号">超越号</option>
+			</select>
+			<select class="energy-system">
+				<option value="劲量型">劲量型</option>
+				<option value="光能型">光能型</option>
+				<option value="永久型">永久型</option>
+			</select>
+		</div>
+		<div class="airship-order">
+			<span>四号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+			<select class="power-system">
+				<option value="前进号">前进号</option>
+				<option value="奔腾号">奔腾号</option>
+				<option value="超越号">超越号</option>
+			</select>
+			<select class="energy-system">
+				<option value="劲量型">劲量型</option>
+				<option value="光能型">光能型</option>
+				<option value="永久型">永久型</option>
+			</select>
+		</div>
+	</div>
+	<div class="planet">
+		<div class="airship"></div>
+		<div class="airship"></div>
+		<div class="airship"></div>
+		<div class="airship"></div>
+	</div>
+	<div class="console">
+		
+	</div>
+</body>
+</html>
+<script src="task27_js.js"></script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+		.planet{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			background: #0B7AEC;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -150px 0 0 -150px;
+		}
+		.airship{
+			width: 100px;
+			height: 20px;
+			background: #EC730B;
+			position: absolute;
+			display: none;
+			color: #fff;
+			font-family: 微软雅黑;
+			text-align: center;
+		}
+		.airship:nth-of-type(1){
+			top: -30px;
+			left: 100px;
+			transform: rotate(0deg);
+			transform-origin: 50px 180px;
+		}
+		.airship:nth-of-type(2){
+			top: -60px;
+			left: 100px;
+			transform: rotate(0deg);
+			transform-origin: 50px 210px;
+		}
+		.airship:nth-of-type(3){
+			top: -90px;
+			left: 100px;
+			transform: rotate(0deg);
+			transform-origin: 50px 240px;
+		}
+		.airship:nth-of-type(4){
+			top: -120px;
+			left: 100px;
+			transform: rotate(0deg);
+			transform-origin: 50px 270px;
+		}
+		.airship-order span{
+			color: #fff;
+		}
+		.console{
+			width: 300px;
+			height: 500px;
+			background: rgba(255,255,255,0.1);
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: 1px solid rgba(255,255,255,0.5);
+			border-bottom: none;
+			overflow: auto;
+			color: #fff;
+			padding: 10px;
+			font-family: 微软雅黑;
+			font-size: 14px;
+			line-height: 22px;
+		}
+	</style>
+</head>
+<body>
+	<div class="operation">
+		<div class="airship-order">
+			<span>一号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+		</div>
+		<div class="airship-order">
+			<span>二号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+		</div>
+		<div class="airship-order">
+			<span>三号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+		</div>
+		<div class="airship-order">
+			<span>四号</span>
+			<button>起飞</button>
+			<button>飞行</button>
+			<button>停止</button>
+			<button>销毁</button>
+		</div>
+	</div>
+	<div class="planet">
+		<div class="airship"></div>
+		<div class="airship"></div>
+		<div class="airship"></div>
+		<div class="airship"></div>
+	</div>
+	<div class="console">
+		
+	</div>
+</body>
+</html>
+<script src="task26_js.js"></script>
