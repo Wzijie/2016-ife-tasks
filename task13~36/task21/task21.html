@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: 微软雅黑;
+		}
+		#container{
+			padding: 20px;
+		}
+		#tag-container span,
+		#hobby-container span{
+			padding: 5px 10px;
+			font-family: 微软雅黑;
+			background: #8fc8ff;
+			margin-right: 10px;
+			box-sizing: border-box;
+			display: inline-block;
+			cursor: pointer;
+			transition: all 0.2s ease;
+		}
+		#hobby-container span{ background: #FFC87F; }
+		#container div span{
+			color: #fff;
+		}
+		label{
+			margin: 20px 0;
+			display: block;
+		}
+		#hobby-btn{
+			display: block;
+		}
+		#hobby-input{
+			height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<label>Tag:<input id="tag-input" type="text"></label>
+	<div id="tag-container"></div>
+
+	<textarea id="hobby-input">足球，篮球&#13;跳舞、唱歌&#13;&#13;lol 魔兽 实况主球</textarea>
+	<button id="hobby-btn">确认兴趣爱好</button>
+	<div id="hobby-container"></div>
+</body>
+<script src="task21-js.js"></script>
+</html>
+<script>
+	// var arr = ["sb","1","2"];
+	// arr.map(function(item){
+	// 	console.log(item);
+	// });
+	// var str = " #e$r%3!w^6&7*8(9 o	w";
+	// var data = str.trim().split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/).filter(function(item){
+	// 	if(item != null && item.length > 0){
+	// 		return true;
+	// 	}else{
+	// 		return false;
+	// 	}
+	// });
+	// var arr = [1,2,3];
+	// for(var i=0; i<data.length; i++){
+	// 	arr.push(data[i]);
+	// }
+	// console.log(arr);
+</script>
