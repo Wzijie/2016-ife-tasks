@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十三：听指令的小方块（一）</title>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 微软雅黑;
+		}
+		.container{
+			position: relative;
+			height: 560px;
+		}
+		#cube{
+			width: 50px;
+			height: 50px;
+			background-color: #fe0000;
+			box-sizing: border-box;
+			border-top: 13px solid #0100fe;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+			transition: all 0.2s ease; 
+		}
+		.container table{
+			border-collapse: collapse;
+			box-sizing: border-box;
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+		}
+		.container table td{
+			width: 50px;
+			height: 50px;
+			border: 1px solid #ddd;
+			box-sizing: border-box;
+		}
+		.container table tr:first-of-type td{
+			border: none;
+			border-bottom: 2px solid #000;
+		}
+		.container table tr:last-of-type td{
+			border-bottom: 2px solid #000;
+		}
+		.container table tr td:first-of-type{
+			border: none;
+			border-right: 2px solid #000;
+		}
+		.container table tr td:last-of-type{
+			border-right: 2px solid #000;
+		}
+		.container table tr:first-of-type td:first-of-type{
+			border: none;
+		}
+		.container table tr:first-of-type td:last-of-type{
+			border-right: none;
+		}
+		/*#cube.top{
+			transform: rotate(0deg);
+		}
+		#cube.right{
+			transform: rotate(90deg);
+		}
+		#cube.bottom{
+			transform: rotate(180deg);
+		}
+		#cube.left{
+			transform: rotate(270deg);
+		}*/
+		.control{
+			margin-left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="cube"></div>
+	</div>
+	<div class="control">
+		<input type="text" class="command">
+		<button>执行</button>
+		<br>
+		<button>GO</button>
+		<button>TUN LEF</button>
+		<button>TUN RIG</button>
+		<button>TUN BAC</button>
+	</div>
+</body>
+</html>
+<script src="task33_js.js"></script>
