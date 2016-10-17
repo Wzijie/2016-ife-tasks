@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流布局</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+</body>
+</html>
+<script src='task44_js.js'></script>
+<script>
+	var waterFall = new WaterFall('#container',4,'./image/waterfall_img/');
+	waterFall.addImg(20);
+</script>
