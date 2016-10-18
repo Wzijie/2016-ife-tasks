@@ -17,7 +17,7 @@
 		// 图片目录
 		this.directory = directory;
 		// 是否正在执行ajax请求 / 防止重复执行
-		this.isGetImg = false;
+		// this.isGetImg = false;
 		// ajax获取时的loading图片元素
 		this.getImgLoading = null;
 		// 提示已经没有更多图片了的文字元素
@@ -70,6 +70,9 @@
 				this.addImg(10);
 			}else{
 				// 若不在底部时将提示文字隐藏
+				if(this.getImgLoading){
+					this.getImgLoading.style.display = 'none';
+				}
 				if(this.noMoreImg){
 					this.noMoreImg.style.display = 'none';
 				}
@@ -81,58 +84,16 @@
 	// addnum 要添加的图片数量 number  默认为1
 	WaterFall.prototype.addImg = function(addNum){
 		
-		// 如果ajax正在执行则退出函数
-		if(this.isGetImg){
-			return;
-		}
-
-		this.isGetImg = true;
-
-		// 保存图片名字的数组
-		var imgData = null;
-
-		// ajax提交目录数据
-		var dirData = new FormData();
-		dirData.append('dir',this.directory);
-
-		// ajax获取图片名字
-		var xhr = new XMLHttpRequest
-		xhr.open('post','img_info.json');
-
-		xhr.onreadystatechange = function(){
-
-			if(xhr.readyState === 4){
-				// console.log(xhr.responseText);
-				imgData = JSON.parse(xhr.responseText);
-				
-				// console.log(this.imgIndex +'>'+ imgData.length);
-
-				// 执行添加图片函数
-				eachAddImg.call(this);
-				
-				
-				// 加载图片完隐藏loading元素
-				if(this.getImgLoading){
-					this.getImgLoading.style.display = 'none';
-				}
-
-				this.isGetImg = false;
-			}
-			
-		}.bind(this);
-
-		xhr.send(dirData);
 
 		// 要添加的图片数量 默认为1
 		var addImgNum = addNum || 1;
 
-		function eachAddImg(){
 			// 循环执行添加图片操作
-			// console.log(1)
+
 			for(var i=0; i<addImgNum; i+=1){
 				
 				// 判断是否还有图片
-				if(!imgData[this.imgIndex]){
+				if(this.imgIndex > 58){
 					if(!this.noMoreImg){
 						this.noMoreImg = document.createElement('p');
 						this.noMoreImg.innerHTML = '已无更多图片';
@@ -192,19 +153,18 @@
 				img.onload = imgLoadHandler;
 
 				// 图片名字的处理 
-				// if(this.imgIndex < 10){
-				// 	img.src = 'image/waterfall_img/nature_10-00'+this.imgIndex+'.jpg';
-				// }else{
-				// 	img.src = 'image/waterfall_img/nature_10-0'+this.imgIndex+'.jpg';
-				// }
+				if(this.imgIndex < 10){
+					img.src = 'image/waterfall_img/nature_10-00'+this.imgIndex+'.jpg';
+				}else{
+					img.src = 'image/waterfall_img/nature_10-0'+this.imgIndex+'.jpg';
+				}
 
-				img.src = this.directory + imgData[this.imgIndex];
+				
 
 				// 添加一张图片后索引加一
 				this.imgIndex += 1;
 				
 			}
-		}
 
 	}
 
