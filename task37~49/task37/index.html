@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务三十七：UI组件之浮出层</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: 微软雅黑;
+			box-sizing: border-box;
+			height: 2000px;
+			background: #ccc;
+		}
+		.btn-show{
+			width: 100px;
+			height: 50px;
+			margin: 20px auto;
+			display: block;
+		}
+		#mask{
+			background: rgba(0,0,0,0.4);
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}
+		#float-layer{
+			width: 500px;
+			border: 2px solid #000;
+			background: #fff;
+		}
+		#float-layer h1{
+			font-size: 16px;
+			font-weight: normal;
+			background: #666;
+			color: #fff;
+			padding: 10px;
+			border-bottom: 2px solid #000;
+		}
+		#float-layer .content{
+			padding: 10px;
+			height: 150px;
+		}
+		#float-layer form{
+			text-align: right;
+			padding: 10px;
+		}
+		#float-layer input[type='button']{
+			width: 100px;
+			height: 40px;
+			font-family: 微软雅黑;
+			color: #fff;
+			background: #666;
+			border: 2px solid #000;
+		}
+		#resize-bottom{
+			position: absolute;
+			bottom: 0px;
+			height: 2px;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn-show">浮出层</button>
+	<div id="float-layer">
+		<h1>这是一个浮出层</h1>
+		<div class="content">
+			这是一个浮出层
+		</div>
+		<form>
+			<input type="button" id="btn-sure" value="确定">
+			<input type="button" id="btn-cancel" value="取消">
+		</form>
+		<div id="resize-bottom"></div>
+	</div>
+	<div id="mask"></div>
+</body>
+</html>
+<script src="task37_js.js"></script>
