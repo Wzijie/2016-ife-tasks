@@ -2,12 +2,12 @@
 var directions = ["top","right","bottom","left"];	//方向
 var dirOrder = 0;	//directions序号
 var rotateAngle = 0;	//旋转角度
-var rows = 10;	//行
-var columns = 10;	//列
+var rows = 16;	//行
+var columns = 30;	//列
 var chess = document.querySelector("#cube");	//正方形dom
 var chessWidth = chess.offsetWidth;		//正方形宽度
-var x = 1;	//正方形x坐标
-var y = 1;	//正方形y坐标
+var x = 4;	//正方形x坐标
+var y = 8;	//正方形y坐标
 var commandInput = document.querySelector(".command");	//命令输入表单
 var runBtn = document.querySelector(".control");	//按钮
 var rowsOrderList = document.querySelector(".rows-order");  // 显示当前行数的<ol>
@@ -490,7 +490,8 @@ function runCommand(command){
 		console.log(command.substring(command.lastIndexOf(" ")+1,command.length));
 		var endX = command.substring(command.lastIndexOf(" ")+1,command.length).split(",")[0];
 		var endY = command.substring(command.lastIndexOf(" ")+1,command.length).split(",")[0];
-		depthFirstSearchX(endX,endY);
+		// depthFirstSearchX(endX,endY);
+		astar(x,y, endX,endY);
 	}
 
 	chess.style.top = chessWidth * y + "px";
@@ -887,6 +888,258 @@ function depthFirstSearchY(endX,endY){
 }
 
 //console.log(commandCheck(commandStrSplit("MOV RIG 30")));
-initChessBoard(".container",rows,columns);
+initChessBoard(".map-container",rows,columns);
 //aStar();
 //console.log(document.querySelector("[data-columns='"+x+"'][data-rows='"+y+"']"));
+
+// 17-4-22尝试实现a星寻路算法
+function astar(startX, startY, endX, endY){
+	// 开始节点
+	var startNode = rightNode = document.querySelector("[data-columns='"+startX+"'][data-rows='"+startY+"']");
+	startNode.g = Math.abs(startX - startX) + Math.abs(startY - startY);
+	startNode.h = Math.abs(startX - endX) + Math.abs(startY - endY);
+	startNode.f = startNode.g + startNode.h;
+
+	// 目标节点
+	var endNode = rightNode = document.querySelector("[data-columns='"+endX+"'][data-rows='"+endY+"']");
+	endNode.style.background = 'blue';
+
+	// 开启列表存放待检查的节点
+	var openList = [];
+	// 关闭列表存放查询后开启列表中f值最小的节点
+	var closeList = [];
+
+	// 结果路径
+	var resultPath = [];
+
+	function aroundNode(node){
+		// 节点的x,y值
+		var nodeX = parseInt(node.getAttribute('data-columns'));
+		var nodeY = parseInt(node.getAttribute('data-rows'));
+
+		// 上下左右相邻节点
+		var topNode = null;
+		var bottomNode = null;
+		var leftNode = null;
+		var rightNode = null;
+
+		// 判断是否在地图内
+		if(nodeY-1 > 0){
+			topNode = document.querySelector("[data-columns='"+nodeX+"'][data-rows='"+(nodeY-1)+"']");
+
+			// 判断该位置是否是墙及该位置节点是否在关闭列表
+			// 关闭列表的节点不需要检查
+			if(topNode.className.indexOf('wall') === -1 && closeList.indexOf(topNode) === -1){
+				// 设置g,h,f
+				// g为自己距离父节点的值
+				topNode.g = Math.abs(nodeX - nodeX) + Math.abs(nodeY-1 - nodeY);
+				// h为自己距离目标节点的值
+				topNode.h = Math.abs(nodeX - endX) + Math.abs(nodeY-1 - endY);
+				// f为g+h
+				topNode.f = topNode.g + topNode.h;
+				topNode.classList.add('blue');
+				// 设置parent属性为父节点
+				topNode.parent = node;
+				// 将该位置节点放入开启列表
+				openList.push(topNode);
+				console.log(topNode,topNode.g,topNode.h,topNode.f,'topNode');
+			}
+		}
+		if(nodeY+1 < rows+1){
+			bottomNode = document.querySelector("[data-columns='"+nodeX+"'][data-rows='"+(nodeY+1)+"']");
+			if(bottomNode.className.indexOf('wall') === -1 && closeList.indexOf(bottomNode) === -1){
+				bottomNode.g = Math.abs(nodeX - nodeX) + Math.abs(nodeY+1 - nodeY);
+				bottomNode.h = Math.abs(nodeX - endX) + Math.abs(nodeY+1 - endY);
+				bottomNode.f = bottomNode.g + bottomNode.h;
+				bottomNode.classList.add('blue');
+				bottomNode.parent = node;
+				openList.push(bottomNode);
+				console.log(bottomNode,bottomNode.g,bottomNode.h,bottomNode.f,'bottomNode');
+			}
+		}
+		if(nodeX-1 > 0){
+			leftNode = document.querySelector("[data-columns='"+(nodeX-1)+"'][data-rows='"+nodeY+"']");
+			if(leftNode.className.indexOf('wall') === -1 && closeList.indexOf(leftNode) === -1){
+				leftNode.g = Math.abs(nodeX-1 - nodeX) + Math.abs(nodeY - nodeY);
+				leftNode.h = Math.abs(nodeX-1 - endX) + Math.abs(nodeY - endY);
+				leftNode.f = leftNode.g + leftNode.h;
+				leftNode.classList.add('blue');
+				leftNode.parent = node;
+				openList.push(leftNode);
+				console.log(leftNode,leftNode.g,leftNode.h,leftNode.f,'leftNode');
+			}
+		}
+		if(nodeX+1 < columns+1){
+			rightNode = document.querySelector("[data-columns='"+(nodeX+1)+"'][data-rows='"+nodeY+"']");
+			if(rightNode.className.indexOf('wall') === -1 && closeList.indexOf(rightNode) === -1){
+				rightNode.g = Math.abs(nodeX+1 - nodeX) + Math.abs(nodeY - nodeY);
+				rightNode.h = Math.abs(nodeX+1 - endX) + Math.abs(nodeY - endY);
+				rightNode.f = rightNode.g + rightNode.h;
+				rightNode.classList.add('blue');
+				rightNode.parent = node;
+				openList.push(rightNode);
+				console.log(rightNode,rightNode.g,rightNode.h,rightNode.f,'rightNode');
+			}
+		}
+		// console.log(topNode,topNode.g,topNode.h,topNode.f);
+		// console.log(bottomNode,bottomNode.g,bottomNode.h,bottomNode.f);
+		// console.log(leftNode,leftNode.g,leftNode.h,leftNode.f);
+		// console.log(rightNode,rightNode.g,rightNode.h,rightNode.f);
+	}
+	console.log(startNode,startNode.g,startNode.h,startNode.f);
+	// while(openList.indexOf(endNode) === -1 && openList.length !== 0){
+	// // for(var i=0; i<4; i++){
+	// 	openList.sort((a,b) => {
+	// 		return a.f - b.f;
+	// 	});
+	// 	var currentNode = openList.splice(0, 1)[0];
+	// 	console.log(currentNode,'currentNode');
+	// 	closeList.push(currentNode);
+	// 	aroundNode(currentNode);
+		
+		
+	// 	console.log(openList);
+	// 	console.log(closeList);
+	// // }	
+	// }
+
+	// 最开始将开始节点放入开启列表
+	openList.push(startNode);
+
+	// 添加promise，当查询到路径后再执行移动操作
+	function promiseQuery(){
+
+		var promise = new Promise((resolve, reject) => {
+
+			function query(){
+
+				// 排序找到开启列表里f值最小的节点
+				openList.sort((a,b) => {
+					return a.f - b.f;
+				});
+
+				// 将当前f值最小的节点移出开启列表并加入关闭列表
+				var currentNode = openList.splice(0, 1)[0];
+				console.log(currentNode,'currentNode');
+				closeList.push(currentNode);
+
+				// 将当前f值最小的节点的上下左右相邻的节点加入开启列表
+				aroundNode(currentNode);
+				
+				
+				console.log(openList);
+				console.log(closeList);
+				// 开启列表中出现目标终点则寻路完毕, 如果开启列表中没有节点了则路径不存在
+				if(openList.indexOf(endNode) === -1 && openList.length !== 0){
+					// 继续执行查找
+					setTimeout(query, 5);
+					// query();
+				}else{
+					// 查找完毕
+					resolve();
+				}
+			}
+			query();
+		});
+
+		return promise;
+	
+	}
+		
+
+	// openList.sort((a,b) => {
+	// 	return a.f - b.f;
+	// });
+	// openList.forEach((node) => {
+	// 	console.log(node,node.g,node.h,node.f);
+	// })
+	var promiseResult = promiseQuery();
+	// 查找完毕后开始移动
+	promiseResult.then(() => {
+
+		// 从终点节点开始寻找父节点，所有父节点连起来就是路径
+		function queryParent(node){
+			resultPath.push(node);
+			console.log(node);
+			if(node.parent){
+				queryParent(node.parent);
+			}
+		}
+		queryParent(endNode);
+		console.log(resultPath);
+
+		// 结果路径数组是从终点到起点的所有节点，先翻转数组在逐个判断相差位置然后执行何种移动
+		resultPath.reverse().forEach((node, index) => {
+			var lastX = parseInt(node.getAttribute('data-columns'));
+			var lastY = parseInt(node.getAttribute('data-rows'));
+			((time) => {
+				setTimeout(() => {
+					if(x > lastX){
+						runCommand('MOV LEF');
+					}
+					if(x < lastX){
+						runCommand('MOV RIG');
+					}
+					if(y > lastY){
+						runCommand('MOV TOP');
+					}
+					if(y < lastY){
+						runCommand('MOV BOT');
+					}
+				}, 200*time);
+			})(index);
+			
+			
+		});
+
+	});
+}
+
+// astar(x,y, 10,10);
+
+var pathfindingStart = document.querySelector('.start-pathfinding');
+var clearWall = document.querySelector('.clear-wall');
+var xinput = document.querySelector('.end-x');
+var yinput = document.querySelector('.end-y');
+var td = document.querySelectorAll('td');
+pathfindingStart.addEventListener('click', () => {
+	// 把寻路查询时节点改变的颜色去掉
+	Array.from(td).forEach((tdNode) => {
+		tdNode.classList.remove('blue');
+	});
+	var xvalue = parseInt(xinput.value);
+	var yvalue = parseInt(yinput.value);
+	astar(x,y, xvalue,yvalue);
+});
+
+clearWall.addEventListener('click', () => {
+	Array.from(td).forEach((tdNode) => {
+		tdNode.classList.remove('wall');
+	});
+});
+
+// 随机修墙
+// document.querySelector('.randomBuildBtn').addEventListener('click', () => {
+// 	randomBuild();
+// });
+
+
+var table = document.querySelector('table');
+var isTableClick = false;
+table.addEventListener('mousedown', () => {
+	isTableClick = true;
+});
+table.addEventListener('mouseup', () => {
+	isTableClick = false;
+});
+table.addEventListener('mouseover', (event) => {
+	if(isTableClick === false || event.target.nodeName !== 'TD'){
+		return;
+	}
+	event.target.className = 'wall';
+	console.log('wall');
+});
+table.addEventListener('selectstart', (event) => {
+	event.preventDefault();
+	event.stopPropagation();
+});
